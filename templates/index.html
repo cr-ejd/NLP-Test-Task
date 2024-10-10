@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniture Product Extractor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Furniture Product Extractor</h1>
+            <p>Enter a URL to extract product names from a furniture store's webpage!</p>
+        </header>
+        
+        <form method="POST">
+            <input type="text" name="url" placeholder="Enter URL" value="{{ url }}" required>
+            <button type="submit">Extract Products</button>
+        </form>
+        
+        {% if products %}
+        <section>
+            <h2>Products Found:</h2>
+            <ul>
+                {% for product in products %}
+                <li>{{ product }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+    </div>
+</body>
+</html>
